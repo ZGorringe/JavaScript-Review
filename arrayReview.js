@@ -2,7 +2,11 @@ var threeItems = [1,2,3];
 //create a function named 'last' that returns the last item from 'threeItems'
 //alert the result of your function
 
-  //code here
+var returnFunction = function(){
+	return threeItems[threeItems.length-1];
+}
+
+alert(returnFunction());
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -11,7 +15,8 @@ var threeItems = [1,2,3];
 //Fix 'dicedArray' below so that it's an array full of integers from 0-10
 var dicedArray = [0,1,4,5,7,8,10];
 
-  //code here
+dicedArray.splice(0, 0, 2, 3, 6, 9);
+dicedArray.sort();
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -21,9 +26,12 @@ var dicedArray = [0,1,4,5,7,8,10];
 //Loop through evenArray removing all values that aren't even 
 var evenArray = [1,2,3,6,22,98,45,23,22,12];
 
-  //code here
-
-
+var remove = function(){
+	for(var i = 0; i < evenArray.length; i++){
+		if(evenArray[i] % 2 !== 0)
+			evenArray.splice(i, 1)
+	}
+}
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 
@@ -34,7 +42,19 @@ var getRandomArbitrary = function() {
 }
 var randomArray = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
 
-  //code here
+var randomLoop = function (){
+	var x = Math.random;
+	for(var i = 0; i < randomArray.length; i++){
+		if(randomArray[i] === x){
+			return(true);
+		}
+		else {
+			return(false);
+		}
+	}
+}
+
+alert(randomLoop());
 
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
@@ -45,7 +65,8 @@ var randomArray = [0,3,4,5,6,7,9,14,17,24,25,26,29,30];
 var first = [1,2,3,4,5];
 var second;
 
-  //code here
+var second = first.slice(0,5);
+second.push(6,7);
 
 alert(first) //[1,2,3,4,5];
 alert(second) //[1,2,3,4,5,6,7];
@@ -59,8 +80,18 @@ alert(second) //[1,2,3,4,5,6,7];
 //write a function called longest that takes in our sentence variable, and returns the longest word in that sentence.
 var sentence = "Dev Mountain is the best"
 
-  //code here
-
+var longest = function(string){
+	var arrSplit = string.split(" ");
+	var lgth = 0
+	var longestWord;
+	for(var i = 0; i < arrSplit.length; i++){
+		if(arrSplit[i].length > lgth){
+			var lgth = arrSplit[i].length;
+			longestWord = arrSplit[i];
+			alert(longestWord);
+		}
+	}
+}
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
@@ -70,7 +101,17 @@ var sentence = "Dev Mountain is the best"
 var myPoem = 'What is a jQuery but a misunderstood object?'
 //What is a jQuery but a misunderstood object? --> What Is A JQuery But A Misunderstood Object?
 
-  //code here
+var capitalize = function(string){
+	var string = string.split(' ');
+	var newArr = [];
+	for(var i = 0; i < string.length; i++){
+		var firstLetter = string[i].charAt(0).toUpperCase();
+		var restOfWord = string[i].slice(1);
+		var wordToPush = firstLetter + restOfWord;
+		newArr.push(wordToPush)
+	}	
+	return newArr.join(' ');
+}
 
 
 
@@ -80,3 +121,13 @@ var myPoem = 'What is a jQuery but a misunderstood object?'
 
 var theOdyssey = "function expression or function declaration? Tis an obvious choice";
 //Write a function called vowelCounter that takes in a string (theOdyssey) and returns how many vowels are in that string.
+var vowelCounter = function(string){
+	var string = string.split('')
+	var counter = 0
+	for(var i = 0; i < string.length; i++){
+		if(string[i] === "a"||string[i] === "e"||string[i] === "i"||string[i] === "o"||string[i] === "u"){ 
+			counter++;
+		}
+	}
+	return counter;
+}
