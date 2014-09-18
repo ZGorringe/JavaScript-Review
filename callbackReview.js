@@ -1,8 +1,12 @@
 /* Declare and Define the functions here that will make the function calls below work properly */
 
-
+var first = function(arr, cb) {
+  var thisName = names[0];
+  cb(thisName)
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 first(names, function(firstName){
   console.log('The first name in names is ', firstName)
 });
@@ -10,12 +14,19 @@ first(names, function(firstName){
 
 
 
+
+
+
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var last = function(arr, cb) {
+  var thisName = names[names.length -1];
+  cb(thisName)
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 last(names, function(lastName){
   console.log('The last name in names is ', lastName);
 });
@@ -25,15 +36,24 @@ last(names, function(lastName){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var contains = function(name, cb) {
+  var hisName = false;
+  for(var i = 0; i < name.length; i++) {
+    if(name === names[i]) {
+      hisName = true;
+    }
+  }
+  cb(hisName);
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 contains('Colt', function(yes){
   if(yes){
-    'Colt is in the array';
+    alert('Colt is in the array');
   } else {
-    'Colt is not in the list';
+    alert('Colt is not in the list');
   }
 });
 
@@ -42,13 +62,19 @@ contains('Colt', function(yes){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var map = function(arr, cb){
+  var newArr = [];
+  for(var i = 0; i < arr.length; i++) {
+    newArr[i] = cb(arr[i]);
+  };
+  return newArr;
+}
 
 
 var numbers = [1,2,3,4,5];
 //Produces a new array of values by mapping each value in list through a transformation function
-map(, function(num){
-  return num * 2; //returns an array of [2,4,6,8,10]
+map(numbers, function(num){
+  console.log(num * 2); //returns an array of [2,4,6,8,10]
 });
 
 
@@ -57,7 +83,23 @@ map(, function(num){
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
 
-
+var uniq = function(arr, cb) {
+  debugger;
+  var newArr [];
+  for(var i = 0; i < arr.length; i++) {
+    newArr.push(arr[i]);
+  }
+  for(var i = 0; i <newArr.length; i++) {
+    for(var j = 0; j < newArr.length; j++) {
+      if(i !== j) {
+        if(newArr[i] === newArr[j]) {
+          newArr.splice(i, 1);
+        }
+      }
+    }
+  }
+  cb(newArr);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
@@ -69,10 +111,15 @@ uniq(names, function(uniqArr){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var each = function(arr, cb) {
+  for(var i = 0; i < arr.length; i++) {
+    cb(arr[i], i);
+  }
+}
 
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 each(names, function(item, indice){
   console.log('The item in the ' + indice + 'position is ' + item)
 });
