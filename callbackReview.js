@@ -82,26 +82,18 @@ map(numbers, function(num){
 
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
 var uniq = function(arr, cb) {
-  debugger;
-  var newArr [];
-  for(var i = 0; i < arr.length; i++) {
-    newArr.push(arr[i]);
-  }
-  for(var i = 0; i <newArr.length; i++) {
-    for(var j = 0; j < newArr.length; j++) {
-      if(i !== j) {
-        if(newArr[i] === newArr[j]) {
-          newArr.splice(i, 1);
-        }
-      }
+  var uniqArr =  arr.sort();
+  for(var i = 0; i < uniqArr.length; i++) {
+    if(uniqArr[i] === uniqArr[i - 1]) {
+      uniqArr.splice(i, 1);
     }
   }
-  cb(newArr);
+  cb(uniqArr)
 }
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
@@ -117,7 +109,6 @@ var each = function(arr, cb) {
   }
 }
 
-
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
 each(names, function(item, indice){
@@ -125,12 +116,20 @@ each(names, function(item, indice){
 });
 
 
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
-
+var getUserById = function(id, cb) {
+  var user;
+  for (var key in users) {
+     user = users[key];
+     for (var prop in obj) {
+        if(user[prop] === '16t'){
+          console.log(user.name && user.email && user.address);
+        }
+     }
+  }
+  cb(user);
+}
 
 var users = [
   {
@@ -152,16 +151,22 @@ var users = [
     address: '192 East 32 North'
   },
 ];
+
 getUserById('16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + 'the name of ' + user.name + ' and the address of ' + user.address); 
 });
 
 
-
-
 /* NEXT PROBLEM - NEXT PROBLEM - NEXT PROBLEM */
 
-
+var find = function(nums) {
+  for(var i = 0; i < nums.length; i++) {
+    if(nums[i] % 2 === 0) {
+      var num = nums.push(nums[i]);
+    }
+    alert(num);
+  }
+}
 
 
 //Looks through each value in the list, returning the first one that passes a truth test 
